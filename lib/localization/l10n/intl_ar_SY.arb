@@ -35,5 +35,7 @@
   "styleMap": "شكل الخريطة",
   "errorCreateAccount": "فشل انشاء الحساب",
   "processSuccess": "نجحت العملية",
-  "processError": "فشلت العملية"
+  "processError": "فشلت العملية",
+  "errorDataAuth": "خطأ في بيانات المصادقة",
+  "errorSetToken": "فشل تسجيلك لاستلام الاشعارات"
 }

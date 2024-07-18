@@ -34,6 +34,13 @@ dependencies:
   dio:
   supabase_flutter: ^2.5.8
   flutter_speed_dial: ^7.0.0
+  optimize_battery: ^0.0.4
+  flutter_local_notifications: ^7.0.0
+  firebase_core:
+  firebase_messaging:
+  get_it: ^7.6.4
+  cached_network_image: ^3.2.3
+
 
 dev_dependencies:
   flutter_test:

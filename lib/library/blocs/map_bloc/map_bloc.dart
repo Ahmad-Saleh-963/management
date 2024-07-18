@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'dart:math';
 import 'package:management_states/config/constant/icons_app.dart';
@@ -8,9 +9,11 @@ import 'package:management_states/library/utils/shared_preferences_helper.dart';
 import 'package:management_states/library/utils/toast_helper.dart';
 import 'package:management_states/localization/generated/l10n.dart';
 import 'package:management_states/services/location/location.dart';
+import 'package:management_states/services/notfications/ask_permisen_notfications.dart';
 import 'package:management_states/utils/toast.dart';
 import 'package:mapbox_gl/mapbox_gl.dart';
 import 'package:http/http.dart' as http;
+import 'package:optimize_battery/optimize_battery.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 import 'map_state.dart';
@@ -294,6 +297,39 @@ class MapBloc extends Cubit<MapState> {
       print(e);
       ShowToastHelper.show(S.current.processError, ToastType.error);
     }
+  }
+
+
+  void testPiremistions(BuildContext context){
+    NotficationsService  notficationsService = NotficationsService();
+    notficationsService.requsetNotficaionPermisen();
+
+    OptimizeBattery.isIgnoringBatteryOptimizations().then((onValue) {
+      if (onValue) {} else {
+        showDialogForInfo("يرجى إعطاء صلاحيات عمل التطبيق بالخلفية\n لضمان وصول التنبيهات والإشعارات \n\n (وضع لاتوجد قيود على استخدام التطبيق للبطارية) ","صلاحيات العمل",context);
+      }
+    });
+
+  }
+
+  showDialogForInfo(String msg,String title,context){
+    showDialog(
+      barrierDismissible: false,
+      context: context, builder: (context) {
+      return AlertDialog(
+        backgroundColor: Colors.white,
+        elevation: 10,
+        scrollable: false,
+        title: Text(title,textAlign: TextAlign.center,style: const TextStyle(fontWeight: FontWeight.bold,fontSize: 18)),
+        content:  Text(msg,textAlign: TextAlign.center,textDirection: TextDirection.rtl,style: const TextStyle(fontSize: 15)),
+        actions: [
+          Center(child: MaterialButton(
+            color:Colors.white,
+            child: const Text("حسنا", style: TextStyle(fontSize: 14)),
+            onPressed: () {Navigator.pop(context); OptimizeBattery.stopOptimizingBatteryUsage();},
+          ),)
+        ],
+      );},);
   }
 
 }

@@ -12,6 +12,7 @@ class UserModel {
   String fatherName;
   String matherName;
   String type;
+  String? token;
 
   UserModel({
     required this.id,
@@ -22,6 +23,7 @@ class UserModel {
     required this.type,
     required this.phone,
     required this.password,
+    required this.token,
   });
 
   RoleUser get roleUser{

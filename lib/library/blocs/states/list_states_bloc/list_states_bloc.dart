@@ -1,5 +1,6 @@
 
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:management_states/library/config/messenger.dart';
 import 'package:management_states/library/data_structure/states/states.dart';
 import 'package:management_states/library/utils/shared_preferences_helper.dart';
 import 'package:management_states/localization/generated/l10n.dart';
@@ -8,7 +9,7 @@ import 'package:supabase_flutter/supabase_flutter.dart';
 
 import 'list_states_state.dart';
 
-class ListStatesBloc extends Cubit<ListStatesState> {
+class ListStatesBloc extends Cubit<ListStatesState> with Messenger {
   List<StatesModel> statesPersonal = [];
 
   ListStatesBloc() : super(ListStatesState.initial()) {}
@@ -50,6 +51,11 @@ class ListStatesBloc extends Cubit<ListStatesState> {
     statesModel.deleting = false;
     emit(state.copyWith(date: DateTime.now().toString()));
   }
+
+  @override
+  void onMessage(String key, messageValue) {
+  }
+
 
 
 }

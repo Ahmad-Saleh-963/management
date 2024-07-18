@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "192188474510",
+    "project_id": "managementstates-89fa9",
+    "storage_bucket": "managementstates-89fa9.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:192188474510:android:88fe50f258bd152d0f95df",
+        "android_client_info": {
+          "package_name": "com.ahmadsaleh.managementstates"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDIeCOanGl3tJgrkDkvVbMqo3qQpxG7l9I"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,5 +1,5 @@
-import 'dart:math';
-
+import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_speed_dial/flutter_speed_dial.dart';
@@ -26,11 +26,30 @@ class _MapPageState extends State<MapPage> {
   late MapBloc bloc;
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 
+
+  void getMsg()async{
+
+    FirebaseMessaging.onMessage.listen((RemoteMessage message) {
+      print("Received message in foreground: ${message.notification?.title}");
+      // يمكنك هنا إضافة الإجراءات التي تريد تنفيذها عند استلام الرسالة في التطبيق مفتوح
+    });
+
+    FirebaseMessaging.onMessageOpenedApp.listen((RemoteMessage message) {
+      print("App opened from background: ${message.notification?.title}");
+      // يمكنك هنا إضافة الإجراءات التي تريد تنفيذها عندما يتم فتح التطبيق من الخلفية
+    });
+
+  }
+
+
+
   @override
   void initState() {
     super.initState();
     bloc = MapBloc();
     bloc.getMyLocation();
+    bloc.testPiremistions(context);
+    getMsg();
   }
 
   @override
@@ -89,26 +108,6 @@ class _MapPageState extends State<MapPage> {
                         color:ColorsApp.primaryColor,
                       ),
                     )),
-                // Positioned(
-                //     top: 50,
-                //     right: 50,
-                //     child: Column(
-                //       children: [
-                //         FloatingActionButton(
-                //           onPressed: () {
-                //             bloc.increaseZoom();
-                //           },
-                //           child: const Icon(Icons.add),
-                //         ),
-                //         const SizedBox(height: 10),
-                //         FloatingActionButton(
-                //           onPressed: () {
-                //             bloc.decreaseZoom();
-                //           },
-                //           child: const Icon(Icons.add_business_outlined),
-                //         ),
-                //       ],
-                //     )),
               ],
             ),
             floatingActionButton: bloc.user.roleUser == RoleUser.admin ? _buildFloatActionWidget(context,state)

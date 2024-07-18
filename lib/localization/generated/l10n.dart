@@ -409,6 +409,26 @@ class S {
       args: [],
     );
   }
+
+  /// `خطأ في بيانات المصادقة`
+  String get errorDataAuth {
+    return Intl.message(
+      'خطأ في بيانات المصادقة',
+      name: 'errorDataAuth',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `فشل تسجيلك لاستلام الاشعارات`
+  String get errorSetToken {
+    return Intl.message(
+      'فشل تسجيلك لاستلام الاشعارات',
+      name: 'errorSetToken',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

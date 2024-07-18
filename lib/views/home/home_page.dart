@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:management_states/config/constant/icons_app.dart';
 import 'package:management_states/library/constant/colors_app.dart';
+import 'package:management_states/services/notfications/ask_permisen_notfications.dart';
 import 'package:management_states/utils/ui/components/icons.dart';
 import 'package:management_states/utils/ui/my_drawer.dart';
+import 'package:optimize_battery/optimize_battery.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});

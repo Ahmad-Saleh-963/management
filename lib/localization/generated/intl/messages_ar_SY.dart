@@ -40,12 +40,16 @@ class MessageLookup extends MessageLookupByLibrary {
         "error": MessageLookupByLibrary.simpleMessage("حدث خطأ غير معروف"),
         "errorCreateAccount":
             MessageLookupByLibrary.simpleMessage("فشل انشاء الحساب"),
+        "errorDataAuth":
+            MessageLookupByLibrary.simpleMessage("خطأ في بيانات المصادقة"),
         "errorEmail":
             MessageLookupByLibrary.simpleMessage("البريد الإلكتروني غير صحيح"),
         "errorLoadPage":
             MessageLookupByLibrary.simpleMessage("فشل تحميل الصفحة"),
         "errorPassword":
             MessageLookupByLibrary.simpleMessage("كلمة المرور غير صحيحة"),
+        "errorSetToken": MessageLookupByLibrary.simpleMessage(
+            "فشل تسجيلك لاستلام الاشعارات"),
         "errorStatus": MessageLookupByLibrary.simpleMessage("errorStatus"),
         "exitAppConfirm":
             MessageLookupByLibrary.simpleMessage("هل تريد الخروج من التطبيق؟"),
