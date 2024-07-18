@@ -1,6 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
+import 'package:get_it/get_it.dart';
 import 'package:management_states/config/app_theme/them_app.dart';
 import 'package:management_states/localization/generated/l10n.dart';
 import 'package:management_states/services/notfications/notification.dart';
@@ -8,6 +9,7 @@ import 'package:management_states/services/notfications/notificationsA.dart';
 import 'package:management_states/utils/routes/router_screens.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 
+import 'library/config/global_change_notifier.dart';
 import 'library/utils/shared_preferences_helper.dart';
 
 Future<void> firebaseMessagingBackgroundHandler(RemoteMessage message) async {
@@ -20,6 +22,10 @@ Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
     print('Body: ${message.notification?.body}');
   }
 }
+
+void setupLocator() {
+  GetIt.instance.registerLazySingleton<GlobalChangeNotifier>(() => GlobalChangeNotifier());
+}
 void main()async{
   WidgetsFlutterBinding.ensureInitialized();
  await SharedPreferencesHelper.init();
@@ -27,9 +33,7 @@ void main()async{
  await Firebase.initializeApp();
   // firebaseMessagingListener();
   FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
-
-
-
+  setupLocator();
   runApp(const MyApp());
 }
 
