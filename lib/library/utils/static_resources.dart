@@ -34,4 +34,7 @@ static platformType() {
  static String name = "name";
  static String email = "email";
 
+
+ static const String REFRECH_STATES_PAGE = "refrech_states_page";
+
 }

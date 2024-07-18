@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:get_it/get_it.dart';
 import 'package:management_states/library/blocs/states/list_states_bloc/list_states_bloc.dart';
 import 'package:management_states/library/blocs/states/list_states_bloc/list_states_state.dart';
+import 'package:management_states/library/config/global_change_notifier.dart';
+import 'package:management_states/library/utils/static_resources.dart';
 
 class ListStates extends StatefulWidget {
   const ListStates({super.key});
@@ -53,6 +56,9 @@ class _ListStatesState extends State<ListStates> {
                               onPressed: () {
                                 bloc.deleteStatePersonal(
                                     bloc.statesPersonal[index]);
+                                GetIt.I<GlobalChangeNotifier>()
+                                    .subject
+                                    .add((StaticResources.REFRECH_STATES_PAGE, null));
                               },
                               icon: const Icon(
                                 Icons.delete,

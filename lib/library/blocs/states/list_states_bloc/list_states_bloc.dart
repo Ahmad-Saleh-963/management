@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:management_states/library/config/messenger.dart';
 import 'package:management_states/library/data_structure/states/states.dart';
 import 'package:management_states/library/utils/shared_preferences_helper.dart';
+import 'package:management_states/library/utils/static_resources.dart';
 import 'package:management_states/localization/generated/l10n.dart';
 import 'package:management_states/utils/toast.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
@@ -12,7 +13,9 @@ import 'list_states_state.dart';
 class ListStatesBloc extends Cubit<ListStatesState> with Messenger {
   List<StatesModel> statesPersonal = [];
 
-  ListStatesBloc() : super(ListStatesState.initial()) {}
+  ListStatesBloc() : super(ListStatesState.initial()) {
+    prepareMessengerListen();
+  }
 
   Future getStatesPersonal() async {
     emit(state.copyWith(loading: true));
@@ -54,6 +57,9 @@ class ListStatesBloc extends Cubit<ListStatesState> with Messenger {
 
   @override
   void onMessage(String key, messageValue) {
+    if(key == StaticResources.REFRECH_STATES_PAGE){
+     // getStatesPersonal();
+    }
   }
 
 
