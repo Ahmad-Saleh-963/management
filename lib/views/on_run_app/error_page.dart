@@ -19,7 +19,7 @@ class ErrorOpenPage extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Lottie.asset("assets/images/error.json", height: height / 5),
+           // Lottie.asset("assets/images/error.json", height: height / 5),
             AutoSizeText(
               S.current.errorLoadPage,
               style: TextStyle(

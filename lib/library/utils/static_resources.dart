@@ -37,4 +37,10 @@ static platformType() {
 
  static const String REFRECH_STATES_PAGE = "refrech_states_page";
 
+
+ /// For Handle Msg
+ static const String NEW_STATE = "حالة جديدة";
+
+
+
 }

@@ -7,4 +7,5 @@ class RoutesNames {
   static String logInPage = "logInPage";
   static String registerPage = "registerPage";
   static String generalNewsPage = "generalNewsPage";
+  static String mathPage = "mathPage";
 }

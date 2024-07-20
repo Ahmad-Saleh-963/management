@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'general_news_state.dart';
+part of 'math_state.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -15,7 +15,7 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
-mixin _$GeneralNewsState {
+mixin _$MathState {
   bool get deleting => throw _privateConstructorUsedError;
   bool get loading => throw _privateConstructorUsedError;
   String get date => throw _privateConstructorUsedError;
@@ -53,23 +53,22 @@ mixin _$GeneralNewsState {
       throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $GeneralNewsStateCopyWith<GeneralNewsState> get copyWith =>
+  $MathStateCopyWith<MathState> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $GeneralNewsStateCopyWith<$Res> {
-  factory $GeneralNewsStateCopyWith(
-          GeneralNewsState value, $Res Function(GeneralNewsState) then) =
-      _$GeneralNewsStateCopyWithImpl<$Res, GeneralNewsState>;
+abstract class $MathStateCopyWith<$Res> {
+  factory $MathStateCopyWith(MathState value, $Res Function(MathState) then) =
+      _$MathStateCopyWithImpl<$Res, MathState>;
   @useResult
   $Res call({bool deleting, bool loading, String date});
 }
 
 /// @nodoc
-class _$GeneralNewsStateCopyWithImpl<$Res, $Val extends GeneralNewsState>
-    implements $GeneralNewsStateCopyWith<$Res> {
-  _$GeneralNewsStateCopyWithImpl(this._value, this._then);
+class _$MathStateCopyWithImpl<$Res, $Val extends MathState>
+    implements $MathStateCopyWith<$Res> {
+  _$MathStateCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -102,7 +101,7 @@ class _$GeneralNewsStateCopyWithImpl<$Res, $Val extends GeneralNewsState>
 
 /// @nodoc
 abstract class _$$initialImplCopyWith<$Res>
-    implements $GeneralNewsStateCopyWith<$Res> {
+    implements $MathStateCopyWith<$Res> {
   factory _$$initialImplCopyWith(
           _$initialImpl value, $Res Function(_$initialImpl) then) =
       __$$initialImplCopyWithImpl<$Res>;
@@ -113,7 +112,7 @@ abstract class _$$initialImplCopyWith<$Res>
 
 /// @nodoc
 class __$$initialImplCopyWithImpl<$Res>
-    extends _$GeneralNewsStateCopyWithImpl<$Res, _$initialImpl>
+    extends _$MathStateCopyWithImpl<$Res, _$initialImpl>
     implements _$$initialImplCopyWith<$Res> {
   __$$initialImplCopyWithImpl(
       _$initialImpl _value, $Res Function(_$initialImpl) _then)
@@ -160,7 +159,7 @@ class _$initialImpl implements _initial {
 
   @override
   String toString() {
-    return 'GeneralNewsState.initial(deleting: $deleting, loading: $loading, date: $date)';
+    return 'MathState.initial(deleting: $deleting, loading: $loading, date: $date)';
   }
 
   @override
@@ -240,7 +239,7 @@ class _$initialImpl implements _initial {
   }
 }
 
-abstract class _initial implements GeneralNewsState {
+abstract class _initial implements MathState {
   factory _initial(
       {final bool deleting,
       final bool loading,

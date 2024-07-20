@@ -1,21 +1,21 @@
 {
   "project_info": {
-    "project_number": "192188474510",
-    "project_id": "managementstates-89fa9",
-    "storage_bucket": "managementstates-89fa9.appspot.com"
+    "project_number": "740409798765",
+    "project_id": "math-50f6b",
+    "storage_bucket": "math-50f6b.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:192188474510:android:88fe50f258bd152d0f95df",
+        "mobilesdk_app_id": "1:740409798765:android:407421948097311173cf64",
         "android_client_info": {
-          "package_name": "com.ahmadsaleh.managementstates"
+          "package_name": "com.ahmadsaleh.math"
         }
       },
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyDIeCOanGl3tJgrkDkvVbMqo3qQpxG7l9I"
+          "current_key": "AIzaSyC-v6lJ0RJDS2VGsIgwAY6dRJMtJkDyzW0"
         }
       ],
       "services": {

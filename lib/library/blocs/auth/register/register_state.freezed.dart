@@ -18,19 +18,20 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$RegisterState {
   bool get loading => throw _privateConstructorUsedError;
   bool get login => throw _privateConstructorUsedError;
+  String get date => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(bool loading, bool login) initial,
+    required TResult Function(bool loading, bool login, String date) initial,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(bool loading, bool login)? initial,
+    TResult? Function(bool loading, bool login, String date)? initial,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(bool loading, bool login)? initial,
+    TResult Function(bool loading, bool login, String date)? initial,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -62,7 +63,7 @@ abstract class $RegisterStateCopyWith<$Res> {
           RegisterState value, $Res Function(RegisterState) then) =
       _$RegisterStateCopyWithImpl<$Res, RegisterState>;
   @useResult
-  $Res call({bool loading, bool login});
+  $Res call({bool loading, bool login, String date});
 }
 
 /// @nodoc
@@ -80,6 +81,7 @@ class _$RegisterStateCopyWithImpl<$Res, $Val extends RegisterState>
   $Res call({
     Object? loading = null,
     Object? login = null,
+    Object? date = null,
   }) {
     return _then(_value.copyWith(
       loading: null == loading
@@ -90,6 +92,10 @@ class _$RegisterStateCopyWithImpl<$Res, $Val extends RegisterState>
           ? _value.login
           : login // ignore: cast_nullable_to_non_nullable
               as bool,
+      date: null == date
+          ? _value.date
+          : date // ignore: cast_nullable_to_non_nullable
+              as String,
     ) as $Val);
   }
 }
@@ -102,7 +108,7 @@ abstract class _$$initialImplCopyWith<$Res>
       __$$initialImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({bool loading, bool login});
+  $Res call({bool loading, bool login, String date});
 }
 
 /// @nodoc
@@ -118,6 +124,7 @@ class __$$initialImplCopyWithImpl<$Res>
   $Res call({
     Object? loading = null,
     Object? login = null,
+    Object? date = null,
   }) {
     return _then(_$initialImpl(
       loading: null == loading
@@ -128,6 +135,10 @@ class __$$initialImplCopyWithImpl<$Res>
           ? _value.login
           : login // ignore: cast_nullable_to_non_nullable
               as bool,
+      date: null == date
+          ? _value.date
+          : date // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -135,7 +146,7 @@ class __$$initialImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$initialImpl implements _initial {
-  _$initialImpl({this.loading = false, this.login = false});
+  _$initialImpl({this.loading = false, this.login = false, this.date = ''});
 
   @override
   @JsonKey()
@@ -143,10 +154,13 @@ class _$initialImpl implements _initial {
   @override
   @JsonKey()
   final bool login;
+  @override
+  @JsonKey()
+  final String date;
 
   @override
   String toString() {
-    return 'RegisterState.initial(loading: $loading, login: $login)';
+    return 'RegisterState.initial(loading: $loading, login: $login, date: $date)';
   }
 
   @override
@@ -155,11 +169,12 @@ class _$initialImpl implements _initial {
         (other.runtimeType == runtimeType &&
             other is _$initialImpl &&
             (identical(other.loading, loading) || other.loading == loading) &&
-            (identical(other.login, login) || other.login == login));
+            (identical(other.login, login) || other.login == login) &&
+            (identical(other.date, date) || other.date == date));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, loading, login);
+  int get hashCode => Object.hash(runtimeType, loading, login, date);
 
   @JsonKey(ignore: true)
   @override
@@ -170,27 +185,27 @@ class _$initialImpl implements _initial {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(bool loading, bool login) initial,
+    required TResult Function(bool loading, bool login, String date) initial,
   }) {
-    return initial(loading, login);
+    return initial(loading, login, date);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(bool loading, bool login)? initial,
+    TResult? Function(bool loading, bool login, String date)? initial,
   }) {
-    return initial?.call(loading, login);
+    return initial?.call(loading, login, date);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(bool loading, bool login)? initial,
+    TResult Function(bool loading, bool login, String date)? initial,
     required TResult orElse(),
   }) {
     if (initial != null) {
-      return initial(loading, login);
+      return initial(loading, login, date);
     }
     return orElse();
   }
@@ -225,12 +240,15 @@ class _$initialImpl implements _initial {
 }
 
 abstract class _initial implements RegisterState {
-  factory _initial({final bool loading, final bool login}) = _$initialImpl;
+  factory _initial({final bool loading, final bool login, final String date}) =
+      _$initialImpl;
 
   @override
   bool get loading;
   @override
   bool get login;
+  @override
+  String get date;
   @override
   @JsonKey(ignore: true)
   _$$initialImplCopyWith<_$initialImpl> get copyWith =>

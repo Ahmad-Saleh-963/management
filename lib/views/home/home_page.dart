@@ -1,163 +1,310 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:management_states/config/constant/icons_app.dart';
 import 'package:management_states/library/constant/colors_app.dart';
-import 'package:management_states/services/notfications/ask_permisen_notfications.dart';
-import 'package:management_states/utils/ui/components/icons.dart';
-import 'package:management_states/utils/ui/my_drawer.dart';
-import 'package:optimize_battery/optimize_battery.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
-
   @override
   State<HomePage> createState() => _HomePageState();
 }
 
 class _HomePageState extends State<HomePage> {
-  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
+
+  TextEditingController countRowController = TextEditingController();
+  TextEditingController countColumnController = TextEditingController();
+  TextEditingController countMaxSumValueController = TextEditingController();
+  TextEditingController secondsController = TextEditingController();
+  TextEditingController endRangeController = TextEditingController();
+
 
   @override
   Widget build(BuildContext context) {
-    double height = MediaQuery.of(context).size.height;
-    double width = MediaQuery.of(context).size.width;
-    return Scaffold(
-      key: _scaffoldKey,
-      endDrawer: MyDrawer(
-        width: width,
-        height: height,
-      ),
-      body: Stack(
-        fit: StackFit.expand,
-        children: [
-          GestureDetector(onTap: showBottomSheet, child: const MapImage()),
-          Positioned(
-              top: 290,
-              left: 250,
-              child: Image.asset(
-                ImagesApp.location,
-                color: ColorsApp.primaryColor,
-              ),
-          ),
-          Positioned(
-            top: 50,
-            right: 25,
-            child:GestureDetector(
-                onTap: (){
-                  if(!_scaffoldKey.currentState!.isDrawerOpen){
-                    _scaffoldKey.currentState!.openEndDrawer();
-                  }
-                },
-                child:
-                SvgPicture.asset(
-                  ImagesApp.drawer,
-                  color:ColorsApp.primaryColor,
-                ),
+    double widthScreen = MediaQuery.of(context).size.width;
+    return SafeArea(
+      child: Scaffold(
+        appBar: AppBar(
+          backgroundColor: Colors.green,
+          elevation: 0.0,
+          centerTitle: true,
+          title: const Text("إعدادات التحدي",style: TextStyle(
+            fontSize: 22,
+            color: Colors.white,
+            fontWeight: FontWeight.bold,
           )),
-        ],
-      ),
-    );
-  }
-
-  Color colorBtnClick = ColorsApp.primaryColor ;
-  Color colorBtn = ColorsApp.linearWhite ;
-  int indexBtn=-1;
-  showBottomSheet() {
-    return showModalBottomSheet(
-      context: context,
-      shape: const RoundedRectangleBorder(
-        borderRadius: BorderRadius.vertical(
-          top: Radius.circular(15),
         ),
-      ),
-      clipBehavior: Clip.antiAliasWithSaveLayer,
-      builder: (BuildContext context) {
-        return Container(
-          height: 320,
-          width: double.infinity,
-          padding: const EdgeInsets.all(25),
+        body: Container(
+          margin: const EdgeInsets.only(top: 10,bottom: 30,right: 40,left: 40),
           child: Column(
+            mainAxisAlignment: MainAxisAlignment.end,
             children: [
-              const Row(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: [
-                  Text(": تحديد الحالة  ",
-                      style: TextStyle(
+              const SizedBox(height: 50),
+              SizedBox(
+                height: 50,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Container(
+                      width: 80,
+                      decoration: BoxDecoration(
+                          color: Colors.blue.withOpacity(0.2)
+                      ),
+                      child: TextFormField(
+                        controller: countRowController,
+                        maxLines: 1,
+                        textAlign: TextAlign.center,
+                        keyboardType: TextInputType.number,
+                        decoration: InputDecoration(
+                            border: InputBorder.none,
+                            hintText:"10",
+                            hintStyle: TextStyle(
+                                color: Colors.grey.withOpacity(0.3)
+                            )
+                        ),
+                        style: const TextStyle(
                           color: Colors.black,
                           fontWeight: FontWeight.bold,
-                          fontSize: 20)),
-                ],
+                        ),
+                      ),
+                    ),
+                    const Text(": عدد الصفوف",style: TextStyle(
+                      fontSize: 22,
+                      color: Colors.black,
+                      fontWeight: FontWeight.bold,
+                    )),
+                  ],
+                ),
               ),
-              const SizedBox(height: 10),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  _buildOption("حريق", ImagesApp.fire),
-                  _buildOption("إسعاف", ImagesApp.car),
-                ],
+              SizedBox(
+                height: 50,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Container(
+                      width: 80,
+                      decoration: BoxDecoration(
+                          color: Colors.blue.withOpacity(0.2)
+                      ),
+                      child: TextFormField(
+                        controller: countColumnController,
+                        maxLines: 1,
+                        textAlign: TextAlign.center,
+                        keyboardType: TextInputType.number,
+                        decoration: InputDecoration(
+                            border: InputBorder.none,
+                            hintText:"4",
+                            hintStyle: TextStyle(
+                                color: Colors.grey.withOpacity(0.3)
+                            )
+                        ),
+                        style: const TextStyle(
+                          color: Colors.black,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ),
+                    const Text(": عدد الأعمدة",style: TextStyle(
+                      fontSize: 22,
+                      color: Colors.black,
+                      fontWeight: FontWeight.bold,
+                    )),
+                  ],
+                ),
               ),
-              const SizedBox(height: 30),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  _buildOption("حادث", ImagesApp.carEvent),
-                  _buildOption("قصف", ImagesApp.boom),
-                ],
+              SizedBox(
+                height: 50,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Container(
+                      width: 80,
+                      decoration: BoxDecoration(
+                          color: Colors.blue.withOpacity(0.2)
+                      ),
+                      child: TextFormField(
+                        controller: countMaxSumValueController,
+                        maxLines: 1,
+                        textAlign: TextAlign.center,
+                        keyboardType: TextInputType.number,
+                        decoration: InputDecoration(
+                            border: InputBorder.none,
+                            hintText:"9",
+                            hintStyle: TextStyle(
+                                color: Colors.grey.withOpacity(0.3)
+                            )
+                        ),
+                        style: const TextStyle(
+                          color: Colors.black,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ),
+                    const Text(": المجموع الأعظمي",style: TextStyle(
+                      fontSize: 22,
+                      color: Colors.black,
+                      fontWeight: FontWeight.bold,
+                    )),
+                  ],
+                ),
+              ),
+              SizedBox(
+                height: 50,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    // Container(
+                    //   width: 80,
+                    //   decoration: BoxDecoration(
+                    //       color: Colors.blue.withOpacity(0.2)
+                    //   ),
+                    //   child: TextFormField(
+                    //     controller: startRangeController,
+                    //     maxLines: 1,
+                    //     textAlign: TextAlign.center,
+                    //     keyboardType: TextInputType.number,
+                    //     decoration: InputDecoration(
+                    //         border: InputBorder.none,
+                    //         hintText:"0",
+                    //         hintStyle: TextStyle(
+                    //             color: Colors.grey.withOpacity(0.3)
+                    //         )
+                    //     ),
+                    //     style: const TextStyle(
+                    //       color: Colors.black,
+                    //       fontWeight: FontWeight.bold,
+                    //     ),
+                    //   ),
+                    // ),
+
+                    Container(
+                      width: 80,
+                      decoration: BoxDecoration(
+                          color: Colors.blue.withOpacity(0.2)
+                      ),
+                      child: TextFormField(
+                        controller: endRangeController,
+                        maxLines: 1,
+                        textAlign: TextAlign.center,
+                        keyboardType: TextInputType.number,
+                        decoration: InputDecoration(
+                            border: InputBorder.none,
+                            hintText:"9",
+                            hintStyle: TextStyle(
+                                color: Colors.grey.withOpacity(0.3)
+                            )
+                        ),
+                        style: const TextStyle(
+                          color: Colors.black,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ),
+                    const Text(": القيمة العظمى",style: TextStyle(
+                      fontSize: 22,
+                      color: Colors.black,
+                      fontWeight: FontWeight.bold,
+                    )),
+
+                  ],
+                ),
+              ),
+              SizedBox(
+                height: 50,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Container(
+                      width: 80,
+                      decoration: BoxDecoration(
+                          color: Colors.blue.withOpacity(0.2)
+                      ),
+                      child: TextFormField(
+                        controller: secondsController,
+                        maxLines: 1,
+                        textAlign: TextAlign.center,
+                        keyboardType: TextInputType.number,
+                        decoration: InputDecoration(
+                            border: InputBorder.none,
+                            hintText:"60",
+                            hintStyle: TextStyle(
+                                color: Colors.grey.withOpacity(0.3)
+                            )
+                        ),
+                        style: const TextStyle(
+                          color: Colors.black,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ),
+                    const Text(": عدد الثواني",style: TextStyle(
+                      fontSize: 22,
+                      color: Colors.black,
+                      fontWeight: FontWeight.bold,
+                    )),
+
+                  ],
+                ),
               ),
               const Spacer(),
-              _buildButton(),
+              _buildButtonLogIn(context,widthScreen),
+
             ],
           ),
-        );
-      },
-    );
-  }
-
-  _buildOption(String text, String pathImage) {
-    return Container(
-      height: 50,
-      width: 120,
-      padding: const EdgeInsets.all(5),
-      decoration: BoxDecoration(
-          color: ColorsApp.gry,
-          borderRadius: const BorderRadius.all(Radius.circular(15))),
-      child: GestureDetector(
-        child: Row(
-          children: [
-            Expanded(
-              child: Text(
-                text,
-                textAlign: TextAlign.center,
-              ),
-            ),
-            Container(
-              height: 85,
-                width:45,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(60),
-                  color: ColorsApp.linearWhite,
-                ),
-                child: Image.asset(pathImage)),
-          ],
         ),
       ),
     );
   }
 
-  _buildButton() {
-    return Container(
-      width: 500,
-      height: 50,
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(8),
+  Widget _buildButtonLogIn(BuildContext context,double width) {
+    return AnimatedContainer(
+      duration: const Duration(milliseconds: 500),
+      curve: Curves.linear,
+      width:  width * 0.3,
+      height: 40,
+      child: MaterialButton(
+        onPressed: () async {
+          final int column = int.tryParse(countColumnController.text.toString()) ?? 4;
+          final int row =  int.tryParse(countRowController.text.toString())??10;
+          final int max =   int.tryParse(countMaxSumValueController.text.toString())??9;
+          final int seconds =   int.tryParse(secondsController.text.toString())??60;
+          // final int startRange =   int.tryParse(startRangeController.text.toString())??0;
+          final int endRange =   int.tryParse(endRangeController.text.toString())??9;
+        //  Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context) => InitExamPage(level: 1)), (route) => false);
+        //   Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context) => MathPage(
+        //     endRange: endRange,
+        //     column: column,
+        //     max: max,
+        //     row: row,
+        //     seconds: seconds,
+        //
+        //   )), (route) => false);
+          // context.go(
+          //   RoutesNames.mathPage,
+          //   extra: {
+          //     "seconds": seconds,
+          //     "row": row,
+          //     "max": max,
+          //     "column": column,
+          //     "endRange": endRange,
+          //   },
+          // );
+        },
         color: ColorsApp.primaryColor,
+        highlightColor: Colors.transparent,
+        enableFeedback: false,
+        elevation: 3,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(20.0),
+        ),
+        child:  Text(
+          "بدء",
+          style: const TextStyle(
+              color: Colors.white, fontSize: 18, fontFamily: "Al-Jazeera"),
+        ),
       ),
-      child: const Center(
-          child: Text(
-        "إرسال",
-        style: TextStyle(
-            color: Colors.white, fontWeight: FontWeight.bold, fontSize: 20),
-      )),
     );
   }
 

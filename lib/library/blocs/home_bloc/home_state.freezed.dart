@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'list_states_state.dart';
+part of 'home_state.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -15,7 +15,7 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
-mixin _$ListStatesState {
+mixin _$MapState {
   bool get deleting => throw _privateConstructorUsedError;
   bool get loading => throw _privateConstructorUsedError;
   String get date => throw _privateConstructorUsedError;
@@ -53,23 +53,22 @@ mixin _$ListStatesState {
       throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $ListStatesStateCopyWith<ListStatesState> get copyWith =>
+  $MapStateCopyWith<MapState> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $ListStatesStateCopyWith<$Res> {
-  factory $ListStatesStateCopyWith(
-          ListStatesState value, $Res Function(ListStatesState) then) =
-      _$ListStatesStateCopyWithImpl<$Res, ListStatesState>;
+abstract class $MapStateCopyWith<$Res> {
+  factory $MapStateCopyWith(MapState value, $Res Function(MapState) then) =
+      _$MapStateCopyWithImpl<$Res, MapState>;
   @useResult
   $Res call({bool deleting, bool loading, String date});
 }
 
 /// @nodoc
-class _$ListStatesStateCopyWithImpl<$Res, $Val extends ListStatesState>
-    implements $ListStatesStateCopyWith<$Res> {
-  _$ListStatesStateCopyWithImpl(this._value, this._then);
+class _$MapStateCopyWithImpl<$Res, $Val extends MapState>
+    implements $MapStateCopyWith<$Res> {
+  _$MapStateCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -101,8 +100,7 @@ class _$ListStatesStateCopyWithImpl<$Res, $Val extends ListStatesState>
 }
 
 /// @nodoc
-abstract class _$$initialImplCopyWith<$Res>
-    implements $ListStatesStateCopyWith<$Res> {
+abstract class _$$initialImplCopyWith<$Res> implements $MapStateCopyWith<$Res> {
   factory _$$initialImplCopyWith(
           _$initialImpl value, $Res Function(_$initialImpl) then) =
       __$$initialImplCopyWithImpl<$Res>;
@@ -113,7 +111,7 @@ abstract class _$$initialImplCopyWith<$Res>
 
 /// @nodoc
 class __$$initialImplCopyWithImpl<$Res>
-    extends _$ListStatesStateCopyWithImpl<$Res, _$initialImpl>
+    extends _$MapStateCopyWithImpl<$Res, _$initialImpl>
     implements _$$initialImplCopyWith<$Res> {
   __$$initialImplCopyWithImpl(
       _$initialImpl _value, $Res Function(_$initialImpl) _then)
@@ -160,7 +158,7 @@ class _$initialImpl implements _initial {
 
   @override
   String toString() {
-    return 'ListStatesState.initial(deleting: $deleting, loading: $loading, date: $date)';
+    return 'MapState.initial(deleting: $deleting, loading: $loading, date: $date)';
   }
 
   @override
@@ -240,7 +238,7 @@ class _$initialImpl implements _initial {
   }
 }
 
-abstract class _initial implements ListStatesState {
+abstract class _initial implements MapState {
   factory _initial(
       {final bool deleting,
       final bool loading,

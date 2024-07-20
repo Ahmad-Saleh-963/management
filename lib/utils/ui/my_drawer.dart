@@ -7,9 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:management_states/config/constant/icons_app.dart';
 import 'package:management_states/library/constant/colors_app.dart';
 import 'package:management_states/views/auth/login_page.dart';
-import 'package:management_states/views/generalNews/general_news.dart';
 import 'package:management_states/views/profile/profile_page.dart';
-import 'package:management_states/views/states/list_states_page.dart';
 
 class MyDrawer extends StatelessWidget {
   MyDrawer({super.key, required this.width, required this.height});
@@ -65,14 +63,6 @@ class MyDrawer extends StatelessWidget {
                 ),
               ),
               _buildListTile("الإشعارات", Icon(Icons.notifications, color: ColorsApp.primaryColor), () {},),
-              Divider(color: ColorsApp.primaryColor.withOpacity(0.1), thickness: 0.5),
-              _buildListTile("الأخبار العامة", Icon(Icons.newspaper_rounded, color: ColorsApp.primaryColor), () {
-                Navigator.push(context, MaterialPageRoute(builder:(context) =>  const GeneralNewsPage()));
-                }),
-              Divider(color: ColorsApp.primaryColor.withOpacity(0.1), thickness: 0.5),
-              _buildListTile("الحالات", Icon(Icons.person, color: ColorsApp.primaryColor), () {
-                Navigator.push(context, MaterialPageRoute(builder: (context) => const ListStates()));
-              },),
               Divider(color: ColorsApp.primaryColor.withOpacity(0.1), thickness: 0.5),
               _buildListTile("تسجيل الدخول", Icon(Icons.account_circle_sharp, color: ColorsApp.primaryColor), () {
                 Navigator.push(context, MaterialPageRoute(builder:(context) =>  const LogInPage()));

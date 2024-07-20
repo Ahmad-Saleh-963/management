@@ -6,13 +6,14 @@ part 'user.g.dart';
 class UserModel {
   int id;
   String name;
+  String lastName;
   String email;
   String password;
-  String phone;
   String fatherName;
   String matherName;
   String type;
   String? token;
+  bool isBand;
 
   UserModel({
     required this.id,
@@ -21,9 +22,10 @@ class UserModel {
     required this.fatherName,
     required this.email,
     required this.type,
-    required this.phone,
     required this.password,
     required this.token,
+    required this.isBand,
+    required this.lastName,
   });
 
   RoleUser get roleUser{

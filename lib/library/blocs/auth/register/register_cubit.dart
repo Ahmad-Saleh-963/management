@@ -9,10 +9,14 @@ import 'register_state.dart';
 
 class RegisterCubit extends Cubit<RegisterState> {
   TextEditingController nameController = TextEditingController();
+  TextEditingController lastController = TextEditingController();
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
-  TextEditingController phoneController = TextEditingController();
-  String? roleUser;
+  TextEditingController fatherNameController = TextEditingController();
+  TextEditingController matherNameController = TextEditingController();
+  TextEditingController dateController = TextEditingController();
+  DateTime selectedDate = DateTime.now();
+
   RegisterCubit() : super(RegisterState.initial());
 
   Future register(BuildContext context) async {
@@ -20,15 +24,18 @@ class RegisterCubit extends Cubit<RegisterState> {
       if (emailController.text.isEmpty || !emailController.text.contains('@') || !emailController.text.contains('.')) {
         ShowToastHelper.show(S.current.errorEmail, ToastType.error);
         return;
-      }
-      else if (passwordController.text.isEmpty || passwordController.text.length < 4) {
+      }else if (fatherNameController.text.isEmpty) {
         ShowToastHelper.show(S.current.errorPassword, ToastType.error);
         return;
-      } else {
-        roleUser ??= 'user';
+      } else if (passwordController.text.isEmpty || passwordController.text.length < 4) {
+        ShowToastHelper.show(S.current.errorPassword, ToastType.error);
+        return;
+      }  else if (selectedDate == null) {
+        ShowToastHelper.show(S.current.mustSelectDate, ToastType.error);
+        return;
       }
 
-      emit(state.copyWith(loading: true));
+      emit(state.copyWith(login: true));
       SupabaseClient supabaseClient = SharedPreferencesHelper.getInstanceSupabase();
       try{
         var response = await supabaseClient.from('users').select().eq('email', emailController.text);
@@ -38,19 +45,19 @@ class RegisterCubit extends Cubit<RegisterState> {
           try{
             var response = await supabaseClient.from('users').insert({
               "name":nameController.text,
+              "lastName":lastController.text,
               "email":emailController.text,
               "password":passwordController.text,
-              "phone":phoneController.text,
-              "matherName":'-',
-              "fatherName":'-',
+              "matherName":matherNameController.text,
+              "fatherName":fatherNameController.text,
               "isBand":false,
-              "type":roleUser,
+              "type":"user",
+              "token":"-",
+              "birth":selectedDate.toString(),
             });
             if(response == null){
               ShowToastHelper.show(S.current.processSuccess, ToastType.success);
-              if(SharedPreferencesHelper.getUser() != null){
-                Navigator.pop(context);
-              }
+              Navigator.pop(context);
             }else{
               ShowToastHelper.show(S.current.errorCreateAccount, ToastType.error);
             }
@@ -61,9 +68,25 @@ class RegisterCubit extends Cubit<RegisterState> {
       }catch(e){
         ShowToastHelper.show(S.current.noConnection,ToastType.error);
       }
-    emit(state.copyWith(loading: false));
+    emit(state.copyWith(login: false));
     }
 
+
+  Future<void> selectDate(BuildContext context) async {
+    final DateTime? picked = await showDatePicker(
+      context: context,
+      initialDate: selectedDate,
+      firstDate: DateTime(1900),
+      lastDate: DateTime(2100),
+      locale: const Locale('en'), // Arabic locale
+    );
+
+    if (picked != null && picked != selectedDate) {
+        selectedDate = picked;
+        dateController.text = "${selectedDate.day}/${selectedDate.month}/${selectedDate.year}";
+        emit(state.copyWith(date: DateTime.now().toString()));
+    }
+  }
 
 }
 

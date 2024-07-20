@@ -4,8 +4,6 @@ import 'package:management_states/config/constant/icons_app.dart';
 import 'package:management_states/library/blocs/auth/register/register_cubit.dart';
 import 'package:management_states/library/blocs/auth/register/register_state.dart';
 import 'package:management_states/library/constant/colors_app.dart';
-import 'package:management_states/library/data_structure/user/user.dart';
-import 'package:management_states/library/utils/shared_preferences_helper.dart';
 import 'package:management_states/localization/generated/l10n.dart';
 
 class Register extends StatefulWidget {
@@ -17,6 +15,7 @@ class Register extends StatefulWidget {
 
 class _RegisterState extends State<Register> {
   late RegisterCubit cubit;
+
   @override
   void initState() {
     super.initState();
@@ -26,9 +25,14 @@ class _RegisterState extends State<Register> {
   @override
   void dispose() {
     cubit.close();
+    cubit.lastController.clear();
+    cubit.matherNameController.clear();
+    cubit.fatherNameController.clear();
+    cubit.passwordController.clear();
+    cubit.emailController.clear();
+    cubit.nameController.clear();
     super.dispose();
   }
-
 
   @override
   Widget build(BuildContext context) {
@@ -36,161 +40,118 @@ class _RegisterState extends State<Register> {
     double height = MediaQuery.of(context).size.height;
     return Scaffold(
       body: SingleChildScrollView(
-        child: Stack(
-          children: [
-            Container(
-              height: height / 2.8,
-              decoration: BoxDecoration(
-                borderRadius: const BorderRadius.only(
-                    bottomLeft: Radius.circular(20),
-                    bottomRight: Radius.circular(20)),
-                color: ColorsApp.primaryColor,
-              ),
-              child: Center(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    SizedBox(height: height * 0.06),
-                    _buildLogoImage(),
-                    _buildTextApp(S.current.nameApp),
-                  ],
-                ),
-              ),
-            ),
-            Positioned(
-                top: height / 3.4,
-                child: SizedBox(
-                  width: width,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    mainAxisSize: MainAxisSize.max,
+        child: BlocBuilder<RegisterCubit, RegisterState>(
+          bloc: cubit,
+          builder: (context, RegisterState state) {
+            return Container(
+              width: width,
+              margin: const EdgeInsets.only(left: 15, right: 15),
+              child: Column(
+                children: [
+                  const SizedBox(height: 50),
+                  _buildTextApp(
+                      S.current.createAccount,
+                      color: ColorsApp.yellowColor,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 20,),
+                  const SizedBox(height: 15),
+                  Row(
                     children: [
-                      Container(
-                        height: 100,
-                        width: 100,
-                        alignment: AlignmentDirectional.center,
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(50),
-                            color: Colors.white,
-                            image: DecorationImage(image: AssetImage(ImagesApp.login))),
+                      Expanded(
+                          child: _buildTextField(cubit.lastController,hintText : S.current.lastName),
+                      ),
+                      const SizedBox(width:20),
+                      Expanded(
+                        child: _buildTextField(cubit.nameController,hintText:S.current.name),
                       ),
                     ],
                   ),
-                )),
-            BlocBuilder<RegisterCubit, RegisterState>(
-                 bloc: cubit,
-                 builder: (context, RegisterState state) {
-                  return Container(
-                    width: width,
-                    margin: const EdgeInsets.only(left: 15, right: 15),
-                    child: Column(
-                      children: [
-                        SizedBox(height: height / 2.4),
-                        _buildTextApp(S.current.createAccount,
-                            color: ColorsApp.yellowColor,
-                            fontWeight: FontWeight.bold,
-                            fontSize: 20),
-                        const SizedBox(height: 15),
-                        _buildTextField(cubit.nameController,labelText: Text(S.current.fullName)),
-                        const SizedBox(height: 15),
-                        _buildTextField(cubit.emailController,labelText: Text(S.current.email)),
-                        const SizedBox(height: 15),
-                        _buildTextField(cubit.passwordController,labelText: Text(S.current.password)),
-                        const SizedBox(height: 15),
-                        _buildTextField(cubit.phoneController,labelText: Text(S.current.numberPhone)),
-                        const SizedBox(height: 15),
-                        if(SharedPreferencesHelper.getUser() != null && SharedPreferencesHelper.getUser()!.roleUser == RoleUser.admin)
-                        DropdownButton<String>(
-                          hint: const Text('إختر الصلاحية'),
-                          value: cubit.roleUser,
-                          onChanged: (String? newValue) {
-                            setState(() {
-                              cubit.roleUser = newValue;
-                            });
-                          },
-                          items: <String>['user', 'admin' , 'adminCenter']
-                              .map<DropdownMenuItem<String>>((String value) {
-                            return DropdownMenuItem<String>(
-                              value: value,
-                              child: Text(value),
-                            );
-                          }).toList(),
-                        ),
-                        const SizedBox(height: 15),
-                        _buildButtonLogIn(state,width),
-                        const SizedBox(height: 15),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            GestureDetector(
-                                onTap: () {Navigator.pop(context);},
-                                child: _buildTextApp(S.current.logIn,
-                                    color: ColorsApp.primaryColor,
-                                    fontSize: 16,
-                                    fontWeight: FontWeight.w800)),
-                            const SizedBox(width: 5),
-                            _buildTextApp(S.current.notHaveAccount,
-                                color: ColorsApp.black, fontSize: 16),
-                          ],
-                        ),
-                        const SizedBox(height: 15),
-                      ],
-                    ),
-                  );
-                },
-            ),
-          ],
+                  const SizedBox(height: 15),
+                  Row(
+                    children: [
+                      Expanded(
+                        child: _buildTextField(cubit.fatherNameController,hintText : S.current.nameMather),
+                      ),
+                      const SizedBox(width:20),
+                      Expanded(
+                        child: _buildTextField(cubit.matherNameController,hintText:S.current.nameFather),
+                      ),
+                    ],
+                  ),
+                  const SizedBox(height: 15),
+                  _buildTextField(cubit.emailController,hintText: S.current.email),
+                  const SizedBox(height: 15),
+                  _buildTextField(cubit.passwordController,hintText: S.current.password),
+                  const SizedBox(height: 15),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      ElevatedButton(
+                        onPressed: () => cubit.selectDate(context),
+                        child: Text( cubit.selectedDate == null ? 'اختيار المواليد' : "${cubit.selectedDate!.year} / ${cubit.selectedDate!.month} / ${cubit.selectedDate!.day}"),
+                      ),
+                    ],
+                  ),
+                  const SizedBox(height: 15),
+                  _buildButtonLogIn(state,width),
+                  const SizedBox(height: 15),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      GestureDetector(
+                          onTap: () {Navigator.pop(context);},
+                          child: _buildTextApp(S.current.logIn,
+                              color: ColorsApp.primaryColor,
+                              fontSize: 16,
+                              fontWeight: FontWeight.w800)),
+                      const SizedBox(width: 5),
+                      _buildTextApp(S.current.notHaveAccount, color: ColorsApp.black, fontSize: 16),
+                    ],
+                  ),
+                  const SizedBox(height: 15),
+                ],
+              ),
+            );
+          },
         ),
-      ),
-    );
-  }
-
-  Widget _buildLogoImage() {
-    return Container(
-      height: 140,
-      width: 140,
-      decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(70), color: Colors.white),
-      child: CircleAvatar(
-        child: Image.asset(ImagesApp.logo),
-      ),
-    );
+      ));
   }
 
   Widget _buildTextApp(String txt,
       {Color color = Colors.white,
-      FontWeight fontWeight = FontWeight.normal,
-      double fontSize = 18}) {
+        FontWeight fontWeight = FontWeight.normal,
+        double fontSize = 18}) {
     return Text(
       txt,
       style: TextStyle(color: color, fontSize: fontSize, fontWeight: fontWeight),
     );
   }
 
-  Widget _buildTextField(TextEditingController controller,{String? hintText, Widget? labelText}) {
+  Widget _buildTextField(TextEditingController controller,{String? hintText}) {
     return TextFormField(
       keyboardType: TextInputType.text,
       textAlign: TextAlign.right,
       controller: controller,
+      style: const TextStyle(
+        fontSize: 10
+      ),
       decoration: InputDecoration(
         fillColor: ColorsApp.primaryColor,
         hintText: hintText,
-        label: labelText,
         alignLabelWithHint: true,
-        hintStyle: TextStyle(color: ColorsApp.gry.withOpacity(0.2)),
+        hintStyle: TextStyle(color: ColorsApp.gry),
         border: OutlineInputBorder(
-          borderSide: BorderSide(color: ColorsApp.primaryColor, width: 1.5),
-          borderRadius: BorderRadius.circular(10.0),
+          borderSide: BorderSide(color: ColorsApp.primaryColor, width: 1),
+          borderRadius: BorderRadius.circular(20.0),
         ),
         enabledBorder: OutlineInputBorder(
-          borderSide: BorderSide(color: ColorsApp.primaryColor, width: 1.5),
-          borderRadius: BorderRadius.circular(10.0),
+          borderSide: BorderSide(color: ColorsApp.primaryColor, width: 1),
+          borderRadius: BorderRadius.circular(20.0),
         ),
         focusedBorder: OutlineInputBorder(
-          borderSide: BorderSide(color: ColorsApp.primaryColor, width: 1.5),
-          borderRadius: BorderRadius.circular(10.0),
+          borderSide: BorderSide(color: ColorsApp.primaryColor, width: 1),
+          borderRadius: BorderRadius.circular(20.0),
         ),
         prefixIconColor: ColorsApp.gry.withOpacity(0.2),
       ),
@@ -201,8 +162,8 @@ class _RegisterState extends State<Register> {
     return AnimatedContainer(
       duration: const Duration(milliseconds: 500),
       curve: Curves.linear,
-      width: state.login ? width / 5 : width / 2,
-      height: 50,
+      width: state.login ? width * 0.2 : width * 0.3,
+      height: 40,
       child: MaterialButton(
         onPressed: () async {
           if(state.login)return;
@@ -216,8 +177,8 @@ class _RegisterState extends State<Register> {
           borderRadius: BorderRadius.circular(20.0),
         ),
         child: state.login ? const Center(child: CircularProgressIndicator(color: Colors.white))
-                :
-           Text(
+            :
+        Text(
           S.current.log,
           style: const TextStyle(
               color: Colors.white, fontSize: 18, fontFamily: "Al-Jazeera"),

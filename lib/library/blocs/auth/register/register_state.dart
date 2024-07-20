@@ -7,5 +7,6 @@ class RegisterState with _$RegisterState {
   factory RegisterState.initial({
     @Default(false) bool loading,
     @Default(false) bool login,
+    @Default('') String date,
   }) = _initial;
 }

@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'add_news_state.dart';
+part of 'init_exam_state.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -15,23 +15,31 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
-mixin _$AddNewsState {
+mixin _$InitExamState {
   bool get deleting => throw _privateConstructorUsedError;
   bool get loading => throw _privateConstructorUsedError;
+  bool get hasError => throw _privateConstructorUsedError;
+  bool get hasExam => throw _privateConstructorUsedError;
   String get date => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(bool deleting, bool loading, String date) initial,
+    required TResult Function(bool deleting, bool loading, bool hasError,
+            bool hasExam, String date)
+        initial,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(bool deleting, bool loading, String date)? initial,
+    TResult? Function(bool deleting, bool loading, bool hasError, bool hasExam,
+            String date)?
+        initial,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(bool deleting, bool loading, String date)? initial,
+    TResult Function(bool deleting, bool loading, bool hasError, bool hasExam,
+            String date)?
+        initial,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -53,23 +61,24 @@ mixin _$AddNewsState {
       throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $AddNewsStateCopyWith<AddNewsState> get copyWith =>
+  $InitExamStateCopyWith<InitExamState> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $AddNewsStateCopyWith<$Res> {
-  factory $AddNewsStateCopyWith(
-          AddNewsState value, $Res Function(AddNewsState) then) =
-      _$AddNewsStateCopyWithImpl<$Res, AddNewsState>;
+abstract class $InitExamStateCopyWith<$Res> {
+  factory $InitExamStateCopyWith(
+          InitExamState value, $Res Function(InitExamState) then) =
+      _$InitExamStateCopyWithImpl<$Res, InitExamState>;
   @useResult
-  $Res call({bool deleting, bool loading, String date});
+  $Res call(
+      {bool deleting, bool loading, bool hasError, bool hasExam, String date});
 }
 
 /// @nodoc
-class _$AddNewsStateCopyWithImpl<$Res, $Val extends AddNewsState>
-    implements $AddNewsStateCopyWith<$Res> {
-  _$AddNewsStateCopyWithImpl(this._value, this._then);
+class _$InitExamStateCopyWithImpl<$Res, $Val extends InitExamState>
+    implements $InitExamStateCopyWith<$Res> {
+  _$InitExamStateCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -81,6 +90,8 @@ class _$AddNewsStateCopyWithImpl<$Res, $Val extends AddNewsState>
   $Res call({
     Object? deleting = null,
     Object? loading = null,
+    Object? hasError = null,
+    Object? hasExam = null,
     Object? date = null,
   }) {
     return _then(_value.copyWith(
@@ -92,6 +103,14 @@ class _$AddNewsStateCopyWithImpl<$Res, $Val extends AddNewsState>
           ? _value.loading
           : loading // ignore: cast_nullable_to_non_nullable
               as bool,
+      hasError: null == hasError
+          ? _value.hasError
+          : hasError // ignore: cast_nullable_to_non_nullable
+              as bool,
+      hasExam: null == hasExam
+          ? _value.hasExam
+          : hasExam // ignore: cast_nullable_to_non_nullable
+              as bool,
       date: null == date
           ? _value.date
           : date // ignore: cast_nullable_to_non_nullable
@@ -102,18 +121,19 @@ class _$AddNewsStateCopyWithImpl<$Res, $Val extends AddNewsState>
 
 /// @nodoc
 abstract class _$$initialImplCopyWith<$Res>
-    implements $AddNewsStateCopyWith<$Res> {
+    implements $InitExamStateCopyWith<$Res> {
   factory _$$initialImplCopyWith(
           _$initialImpl value, $Res Function(_$initialImpl) then) =
       __$$initialImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({bool deleting, bool loading, String date});
+  $Res call(
+      {bool deleting, bool loading, bool hasError, bool hasExam, String date});
 }
 
 /// @nodoc
 class __$$initialImplCopyWithImpl<$Res>
-    extends _$AddNewsStateCopyWithImpl<$Res, _$initialImpl>
+    extends _$InitExamStateCopyWithImpl<$Res, _$initialImpl>
     implements _$$initialImplCopyWith<$Res> {
   __$$initialImplCopyWithImpl(
       _$initialImpl _value, $Res Function(_$initialImpl) _then)
@@ -124,6 +144,8 @@ class __$$initialImplCopyWithImpl<$Res>
   $Res call({
     Object? deleting = null,
     Object? loading = null,
+    Object? hasError = null,
+    Object? hasExam = null,
     Object? date = null,
   }) {
     return _then(_$initialImpl(
@@ -134,6 +156,14 @@ class __$$initialImplCopyWithImpl<$Res>
       loading: null == loading
           ? _value.loading
           : loading // ignore: cast_nullable_to_non_nullable
+              as bool,
+      hasError: null == hasError
+          ? _value.hasError
+          : hasError // ignore: cast_nullable_to_non_nullable
+              as bool,
+      hasExam: null == hasExam
+          ? _value.hasExam
+          : hasExam // ignore: cast_nullable_to_non_nullable
               as bool,
       date: null == date
           ? _value.date
@@ -146,7 +176,12 @@ class __$$initialImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$initialImpl implements _initial {
-  _$initialImpl({this.deleting = false, this.loading = false, this.date = ''});
+  _$initialImpl(
+      {this.deleting = false,
+      this.loading = false,
+      this.hasError = false,
+      this.hasExam = false,
+      this.date = ''});
 
   @override
   @JsonKey()
@@ -156,11 +191,17 @@ class _$initialImpl implements _initial {
   final bool loading;
   @override
   @JsonKey()
+  final bool hasError;
+  @override
+  @JsonKey()
+  final bool hasExam;
+  @override
+  @JsonKey()
   final String date;
 
   @override
   String toString() {
-    return 'AddNewsState.initial(deleting: $deleting, loading: $loading, date: $date)';
+    return 'InitExamState.initial(deleting: $deleting, loading: $loading, hasError: $hasError, hasExam: $hasExam, date: $date)';
   }
 
   @override
@@ -171,11 +212,15 @@ class _$initialImpl implements _initial {
             (identical(other.deleting, deleting) ||
                 other.deleting == deleting) &&
             (identical(other.loading, loading) || other.loading == loading) &&
+            (identical(other.hasError, hasError) ||
+                other.hasError == hasError) &&
+            (identical(other.hasExam, hasExam) || other.hasExam == hasExam) &&
             (identical(other.date, date) || other.date == date));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, deleting, loading, date);
+  int get hashCode =>
+      Object.hash(runtimeType, deleting, loading, hasError, hasExam, date);
 
   @JsonKey(ignore: true)
   @override
@@ -186,27 +231,33 @@ class _$initialImpl implements _initial {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(bool deleting, bool loading, String date) initial,
+    required TResult Function(bool deleting, bool loading, bool hasError,
+            bool hasExam, String date)
+        initial,
   }) {
-    return initial(deleting, loading, date);
+    return initial(deleting, loading, hasError, hasExam, date);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(bool deleting, bool loading, String date)? initial,
+    TResult? Function(bool deleting, bool loading, bool hasError, bool hasExam,
+            String date)?
+        initial,
   }) {
-    return initial?.call(deleting, loading, date);
+    return initial?.call(deleting, loading, hasError, hasExam, date);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(bool deleting, bool loading, String date)? initial,
+    TResult Function(bool deleting, bool loading, bool hasError, bool hasExam,
+            String date)?
+        initial,
     required TResult orElse(),
   }) {
     if (initial != null) {
-      return initial(deleting, loading, date);
+      return initial(deleting, loading, hasError, hasExam, date);
     }
     return orElse();
   }
@@ -240,16 +291,22 @@ class _$initialImpl implements _initial {
   }
 }
 
-abstract class _initial implements AddNewsState {
+abstract class _initial implements InitExamState {
   factory _initial(
       {final bool deleting,
       final bool loading,
+      final bool hasError,
+      final bool hasExam,
       final String date}) = _$initialImpl;
 
   @override
   bool get deleting;
   @override
   bool get loading;
+  @override
+  bool get hasError;
+  @override
+  bool get hasExam;
   @override
   String get date;
   @override

@@ -37,5 +37,12 @@
   "processSuccess": "نجحت العملية",
   "processError": "فشلت العملية",
   "errorDataAuth": "خطأ في بيانات المصادقة",
-  "errorSetToken": "فشل تسجيلك لاستلام الاشعارات"
+  "errorSetToken": "فشل تسجيلك لاستلام الاشعارات",
+  "name": "الاسم",
+  "lastName": "الكنية",
+  "nameFather": "اسم الاب",
+  "nameMather": "اسم الام",
+  "birth": "المواليد",
+  "mustSelectDate": "يجب إختيار المواليد"
+
 }

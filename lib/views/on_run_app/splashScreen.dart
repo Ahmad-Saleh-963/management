@@ -1,10 +1,11 @@
 // ignore_for_file: library_private_types_in_public_api
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
-import 'package:management_states/library/config/routes_names.dart';
 import 'package:management_states/library/constant/colors_app.dart';
 import 'package:management_states/library/data_structure/user/user.dart';
 import 'package:management_states/library/utils/shared_preferences_helper.dart';
+import 'package:management_states/views/auth/login_page.dart';
+import 'package:management_states/views/home/home_page.dart';
+import 'package:management_states/views/home/level.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({Key? key}) : super(key: key);
@@ -18,9 +19,11 @@ class _SplashScreenState extends State<SplashScreen> {
     Future.delayed(const Duration(seconds:2)).then((value) {
      UserModel? userModel = SharedPreferencesHelper.getUser();
      if(userModel != null){
-       context.goNamed(RoutesNames.homePage);
+       Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context) => SelectLevel()), (route) => false);
+    //   context.goNamed(RoutesNames.homePage);
      }else{
-       context.goNamed(RoutesNames.logInPage);
+       Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context) => LogInPage()), (route) => false);
+      // context.goNamed(RoutesNames.logInPage);
      }
    });
   }

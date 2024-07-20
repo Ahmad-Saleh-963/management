@@ -10,13 +10,11 @@ class SharedPreferencesHelper {
   static late SharedPreferences _preferences;
   static late SupabaseClient supabase;
   static const String LANG_CODE = 'lang_code';
-  static const String SUPABASE_URL = 'https://lxjnzerpzxnrjixwwbko.supabase.co';
-  static const String SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imx4am56ZXJwenhucmppeHd3YmtvIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MjA5ODI1NjEsImV4cCI6MjAzNjU1ODU2MX0.we3WQvY1UHWqo3CR79OZ3DY7CP63krTlqtDC_UaZlGQ';
-  static const MAPBOX_ACCESS_TOKEN = 'sk.eyJ1IjoiYWhtYWRzYWxlaDk2Mzk2NCIsImEiOiJjbHluZndtcXowNjlsMm1wbGgza2pieXB6In0.4X57NoG4m5iUN85DU0SzAA';
+  static const String SUPABASE_URL = 'https://bzerqhepgxnyqsjesrpo.supabase.co';
+  static const String SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJ6ZXJxaGVwZ3hueXFzamVzcnBvIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MjEzODQ5ODksImV4cCI6MjAzNjk2MDk4OX0.Ja4Jnheo8KT6fuOvPaEodWByf8UFVs3vCkK5nTEmBFw';
 
   static const String USER = 'user';
   static const String ROLE_USER = 'role_user';
-  static const String MY_LOCATION = 'my_location';
 
   static SharedPreferences getInstance() => _preferences;
 

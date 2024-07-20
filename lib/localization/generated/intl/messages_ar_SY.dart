@@ -28,6 +28,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "back": MessageLookupByLibrary.simpleMessage("رجوع"),
         "badInternet":
             MessageLookupByLibrary.simpleMessage("الاتصال بالانترنت ضعيف"),
+        "birth": MessageLookupByLibrary.simpleMessage("المواليد"),
         "cancel": MessageLookupByLibrary.simpleMessage("إنهاء"),
         "createAccount": MessageLookupByLibrary.simpleMessage("إنشاء حساب"),
         "email": MessageLookupByLibrary.simpleMessage("البريد الإلكتروني"),
@@ -54,12 +55,18 @@ class MessageLookup extends MessageLookupByLibrary {
         "exitAppConfirm":
             MessageLookupByLibrary.simpleMessage("هل تريد الخروج من التطبيق؟"),
         "fullName": MessageLookupByLibrary.simpleMessage("الاسم الكامل"),
+        "lastName": MessageLookupByLibrary.simpleMessage("الكنية"),
         "log": MessageLookupByLibrary.simpleMessage("تسجيل"),
         "logIn": MessageLookupByLibrary.simpleMessage("سجل دخول"),
         "logNow": MessageLookupByLibrary.simpleMessage("سجل الان"),
         "logOut": MessageLookupByLibrary.simpleMessage("تسجيل الخروج"),
         "login": MessageLookupByLibrary.simpleMessage("تسجيل الدخول"),
+        "mustSelectDate":
+            MessageLookupByLibrary.simpleMessage("يجب إختيار المواليد"),
+        "name": MessageLookupByLibrary.simpleMessage("الاسم"),
         "nameApp": MessageLookupByLibrary.simpleMessage("أحمد صالح"),
+        "nameFather": MessageLookupByLibrary.simpleMessage("اسم الاب"),
+        "nameMather": MessageLookupByLibrary.simpleMessage("اسم الام"),
         "no": MessageLookupByLibrary.simpleMessage("لا"),
         "noConnection":
             MessageLookupByLibrary.simpleMessage("لا يوجد اتصال بالانترنت"),

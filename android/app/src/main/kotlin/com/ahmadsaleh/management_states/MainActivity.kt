@@ -1,4 +1,4 @@
-package com.ahmadsaleh.managementstates
+package com.ahmadsaleh.math
 
 
 import io.flutter.embedding.android.FlutterActivity

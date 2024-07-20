@@ -429,6 +429,66 @@ class S {
       args: [],
     );
   }
+
+  /// `الاسم`
+  String get name {
+    return Intl.message(
+      'الاسم',
+      name: 'name',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `الكنية`
+  String get lastName {
+    return Intl.message(
+      'الكنية',
+      name: 'lastName',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `اسم الاب`
+  String get nameFather {
+    return Intl.message(
+      'اسم الاب',
+      name: 'nameFather',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `اسم الام`
+  String get nameMather {
+    return Intl.message(
+      'اسم الام',
+      name: 'nameMather',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `المواليد`
+  String get birth {
+    return Intl.message(
+      'المواليد',
+      name: 'birth',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `يجب إختيار المواليد`
+  String get mustSelectDate {
+    return Intl.message(
+      'يجب إختيار المواليد',
+      name: 'mustSelectDate',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

@@ -10,20 +10,13 @@ dependencies:
   flutter:
     sdk: flutter
   cupertino_icons: ^1.0.2
-  go_router:
+  #go_router:
   lottie:
   auto_size_text:
   flutter_svg: ^2.0.9
   flutter_bloc:
-  google_maps_flutter: ^2.5.3
-  mapbox_gl:
-  http:
-  geolocator: ^11.0.0
   flutter_localization:
-  motion_toast: ^2.9.0
   fluttertoast: ^8.0.9
-  flutter_map: ^6.1.0
-  latlong2:
   google_fonts: 6.0.0
   rxdart: ^0.27.2
   freezed:
@@ -31,7 +24,6 @@ dependencies:
   json_serializable:
   shared_preferences: ^2.2.2
   intl_utils: ^2.8.2
-  dio:
   supabase_flutter: ^2.5.8
   flutter_speed_dial: ^7.0.0
   optimize_battery: ^0.0.4
@@ -40,6 +32,8 @@ dependencies:
   firebase_messaging:
   get_it: ^7.6.4
   cached_network_image: ^3.2.3
+  audioplayers: ^5.2.0
+  timer_count_down:
 
 
 dev_dependencies:
@@ -57,6 +51,7 @@ flutter:
    - assets/images/
    - assets/icons/
    - assets/fonts/
+   - assets/sounds/
 
   fonts:
     - family: Cairo

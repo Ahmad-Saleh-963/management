@@ -6,7 +6,8 @@ import 'package:management_states/library/data_structure/user/user.dart';
 import 'package:management_states/library/utils/shared_preferences_helper.dart';
 import 'package:management_states/localization/generated/l10n.dart';
 import 'package:management_states/utils/toast.dart';
-import 'package:management_states/views/map/map_page.dart';
+import 'package:management_states/views/home/home_page.dart';
+import 'package:management_states/views/home/level.dart';
 import 'package:supabase/supabase.dart';
 
 import 'login_state.dart';
@@ -44,9 +45,7 @@ class LoginCubit extends Cubit<LoginState> {
         UserModel userModel = UserModel.fromJson(response[0]);
         SharedPreferencesHelper.saveUser(userModel);
         await getToken();
-
-        Navigator.push(
-            context, MaterialPageRoute(builder: (context) => const MapPage()));
+        Navigator.push(context, MaterialPageRoute(builder: (context) => const SelectLevel()));
       } else {
         ShowToastHelper.show(S.current.errorDataAuth, ToastType.error);
       }
@@ -59,7 +58,6 @@ class LoginCubit extends Cubit<LoginState> {
   getToken() async{
    try{
      token = await _ms.getToken();
-     print(token);
      try {
        await supabaseClient
            .from('users')
@@ -68,14 +66,10 @@ class LoginCubit extends Cubit<LoginState> {
      }catch(e){
        ShowToastHelper.show(S.current.errorSetToken, ToastType.info);
      }
-
-   }catch(e){
-     print(e);
-   }
-
+   }catch(e){}
   }
 
-  navigatorByRoleUser(context, UserModel userModel) {
+ void navigatorByRoleUser(context, UserModel userModel) {
     if (userModel.roleUser == RoleUser.admin) {
       Navigator.popAndPushNamed(context, RoutesNames.homePage);
     } else {
